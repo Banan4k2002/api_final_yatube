@@ -74,3 +74,10 @@ class Follow(models.Model):
         related_name='followings',
         verbose_name='Подпись',
     )
+
+    class Meta:
+        constraints = (
+            models.UniqueConstraint(
+                fields=('user', 'following'), name='unique_user_following'
+            ),
+        )
